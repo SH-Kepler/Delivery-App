@@ -4,6 +4,7 @@ import GenericInput from '../components/GenericInput';
 import { formContext } from '../context/FormProvider';
 import { validateEmailInput,
   validateNameInput, validatePasswordInput } from '../utils/inputsValidation';
+import NavBar from '../components/NavBar';
 
 function Admin() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -48,7 +49,7 @@ function Admin() {
 
   return (
     <div>
-      <header>
+      {/* <header>
         <h3 data-testid="customer_products__element-navbar-link-orders">
           Gereciar Usuário
         </h3>
@@ -58,7 +59,9 @@ function Admin() {
         <button type="button" data-testid="customer_products__element-navbar-link-logout">
           Sair
         </button>
-      </header>
+      </header> */}
+
+      <NavBar />
 
       <h1>Cadastrar novo Usuário</h1>
 
