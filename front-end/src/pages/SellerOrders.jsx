@@ -13,7 +13,6 @@ function SellerOrders() {
       });
       const { id } = JSON.parse(localStorage.getItem('user')) || '';
       const { data } = await api.get(`/sales/seller/${id}`);
-      console.log('AQUI!!!!', data);
       setOrders(data);
     } catch (error) {
       console.error(error);
