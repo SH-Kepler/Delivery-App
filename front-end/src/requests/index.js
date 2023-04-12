@@ -1,15 +1,8 @@
-// const headers = {
-//   Accept: 'application/json, text/plain, */*',
-//   'Access-Control-Allow-Origin': '*',
-//   'Content-Type': 'application/json',
-// };
-
 const fetchProducts = async () => {
   const response = await fetch(
     `http://localhost:${process.env.REACT_APP_BACKEND_PORT}/products`,
     {
       method: 'GET',
-      // headers,
     },
   );
   const data = await response.json();
@@ -24,12 +17,10 @@ const fetchSales = async (id) => {
     },
   );
   const data = await response.json();
-  // console.log('data', data);
   return data;
 };
 
 const fetchUpdateStatusSale = async (id, newStatus) => {
-  console.log('aquii');
   const response = await fetch(
     `http://localhost:${process.env.REACT_APP_BACKEND_PORT}/sales/status/${id}`,
     {

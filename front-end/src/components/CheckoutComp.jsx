@@ -14,7 +14,6 @@ function Checkout() {
         baseURL: 'http://localhost:3001',
       });
       const { data } = await api.get('/sales/seller');
-      console.log('data', data);
       setSellers(data);
     } catch (error) {
       console.log(error);

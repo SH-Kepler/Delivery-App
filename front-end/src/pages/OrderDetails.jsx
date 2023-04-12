@@ -6,7 +6,6 @@ import { fetchSales, fetchUpdateStatusSale } from '../requests/index';
 function OrderDetails() {
   const [orderDetails, setOrderDetails] = useState({ seller: {} });
   const [items, setItems] = useState([]);
-  // const [date, setDate] = useState('');
   const [statusSale, setStatusSale] = useState('');
 
   const { id } = useParams();
@@ -18,7 +17,6 @@ function OrderDetails() {
   };
 
   const formatDate = (date) => {
-    // const dateFromDB = orderDetails.saleDate;
     const dateFormat = new Date(date).toLocaleString('pt-BR');
     return dateFormat;
   };

@@ -19,8 +19,6 @@ class SellerOrdersProvider extends Component {
       try {
         const response = await axios.get('http://localhost:3001/seller/orders');
         const sellers = response.data;
-        console.log(sellers);
-        console.log(sellers);
         return sellers;
       } catch (error) {
         console.error(error);
