@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('../utils/generate.token');
 
-const authorization = (req, res, next) => {
-  const { Authorization } = req.headers;
+const tokenAuthorization = (req, res, next) => {
+  const { authorization } = req.headers;
 
-  if (!Authorization) {
+  if (!authorization) {
     return res.status(401).json({ message: 'Token not found' });
   }
 
   try {
-    const verify = jwt.verify(Authorization, SECRET);
+    const verify = jwt.verify(authorization, SECRET);
     req.user = verify;
     next();
   } catch (error) {
@@ -18,5 +18,5 @@ const authorization = (req, res, next) => {
 };
 
 module.exports = {
-  authorization,
+  tokenAuthorization,
 };

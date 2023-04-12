@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import CustomerOrderCard from '../components/CustomerOrderCard';
+import OrdersCard from '../components/OrdersCard';
 import Navbar from '../components/NavBar';
 
 export default function CustomerOrder() {
@@ -22,19 +22,29 @@ export default function CustomerOrder() {
       }
     }
     getOrders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const dataTestIdFunc = (i) => ({
+    idCustomer: `customer_orders__element-order-id-${i}`,
+    status: `customer_orders__element-delivery-status-${i}`,
+    date: `customer_orders__element-order-date-${i}`,
+    totalPrice: `customer_orders__element-card-price-${i}`,
+    address: `seller_orders__element-card-address-${i}`,
+  });
 
   return (
     <div>
       <Navbar />
       <div>
-        { orders.length !== 0 ? orders.map((product) => (
-          <CustomerOrderCard
-            key={ product.id }
-            id={ product.id }
-            status={ product.status }
-            saleDate={ product.saleDate }
-            totalPrice={ product.totalPrice }
+        { orders.length !== 0 ? orders.map((sale) => (
+          <OrdersCard
+            key={ sale.id }
+            id={ sale.id }
+            status={ sale.status }
+            saleDate={ sale.saleDate }
+            totalPrice={ sale.totalPrice }
+            dataTestId={ dataTestIdFunc }
           />)) : <h2>Você ainda não possui pedidos! Faça o primeiro!</h2> }
       </div>
     </div>

@@ -1,15 +1,15 @@
 const { Router } = require('express');
 
 const userController = require('../controller/user.controller');
-const { tokenAuthorization } = require('../middlewares/admin.JwtAuthentication');
-const { authorization } = require('../middlewares/JwtAuthentication');
+const { tokenAdminAuthorization } = require('../middlewares/admin.JwtAuthentication');
+const { tokenAuthorization } = require('../middlewares/JwtAuthentication');
 const { verifyEmail, verifyName, verifyPassword } = require('../middlewares/user.validation');
 
 const route = Router();
 
 route.post(
   '/register',
-  tokenAuthorization,
+  tokenAdminAuthorization,
   verifyEmail,
   verifyName,
   verifyPassword,
@@ -17,7 +17,7 @@ route.post(
 );
 
 route.post('/login', verifyEmail, verifyPassword, userController.loginUser);
-route.get('/all', authorization, userController.findUsers);
-route.delete('/:id', authorization, userController.deleteUser);
+route.get('/all', tokenAuthorization, userController.findUsers);
+route.delete('/:id', tokenAuthorization, userController.deleteUser);
 
 module.exports = route;

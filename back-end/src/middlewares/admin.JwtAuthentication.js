@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('../utils/generate.token');
 
-const tokenAuthorization = (req, res, next) => {
+const tokenAdminAuthorization = (req, res, next) => {
   const { authorization } = req.headers;
   const { role } = req.body;
 
@@ -17,5 +17,5 @@ const tokenAuthorization = (req, res, next) => {
 };
 
 module.exports = {
-  tokenAuthorization,
+  tokenAdminAuthorization,
 };

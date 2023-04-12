@@ -19,6 +19,14 @@ function SellerOrders() {
     }
   };
 
+  const dataTestIdFunc = (i) => ({
+    idSeller: `seller_orders__element-order-id-${i}`,
+    status: `seller_orders__element-delivery-status-${i}`,
+    date: `seller_orders__element-order-date-${i}`,
+    totalPrice: `seller_orders__element-card-price-${i}`,
+    address: `seller_orders__element-card-address-${i}`,
+  });
+
   useEffect(() => {
     getAllOrders();
   }, []);
@@ -36,6 +44,7 @@ function SellerOrders() {
           deliveryNumber={ sale.deliveryNumber }
           saleDate={ sale.saleDate }
           totalPrice={ sale.totalPrice }
+          dataTestId={ dataTestIdFunc }
         />
       ))}
     </div>

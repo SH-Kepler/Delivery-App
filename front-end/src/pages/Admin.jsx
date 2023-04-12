@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import GenericInput from '../components/GenericInput';
+import UsersTable from '../components/UsersTable';
 import { formContext } from '../context/FormProvider';
 import { validateEmailInput,
   validateNameInput, validatePasswordInput } from '../utils/inputsValidation';
@@ -12,6 +13,7 @@ function Admin() {
   const { inputsValue: { name, email, password },
     setInputsValue, setUser } = useContext(formContext);
   const { token } = JSON.parse(localStorage.getItem('user'));
+  const [allUsers, setAllUsers] = useState([]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -26,6 +28,7 @@ function Admin() {
       name: name.value, email: email.value, password: password.value, role,
     }, { headers: { Authorization: token } }).then(({ data }) => {
       setUser(data);
+      allUsers.push(data);
 
       setInputsValue({
         name: { value: '', isValid: false },
@@ -42,6 +45,16 @@ function Admin() {
       email: { value: '', isValid: false },
       password: { value: '', isValid: false },
     });
+
+    const asyncCalback = async () => {
+      axios.get(
+        'http://localhost:3001/user/all',
+        { headers: { authorization: token } },
+      ).then(({ data }) => setAllUsers(data))
+        .catch(({ response }) => console.log(response));
+    };
+
+    asyncCalback();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -102,33 +115,7 @@ function Admin() {
           {errorMessage}
         </span>
       </form>
-
-      <h1>Lista de usuários</h1>
-
-      <table>
-        <tr>
-          <th>Item</th>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Tipo</th>
-          <th>Excluir</th>
-        </tr>
-        <tr>
-          <td data-testid="admin_manage__element-user-table-item-number">
-            item-number
-          </td>
-          <td data-testid="admin_manage__input-email">
-            input-email
-          </td>
-          <td data-testid="admin_manage__element-user-table-email">
-            user-table-email
-          </td>
-          <td data-testid="admin_manage__element-user-table-role-<index>">
-            table-role
-          </td>
-        </tr>
-      </table>
-
+      <UsersTable users={ allUsers } set={ setAllUsers } />
     </div>
 
   );

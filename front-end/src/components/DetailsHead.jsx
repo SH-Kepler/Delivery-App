@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { fetchUpdateStatusSale } from '../requests';
 
 function DetailsHead({ sale, dataTestId }) {
   const { pathname } = useLocation();
+  const [status, setStatus] = useState(sale.status);
+  const { id } = useParams();
+
+  const statusToPreparando = () => {
+    fetchUpdateStatusSale(id, 'Preparando');
+    setStatus('Preparando');
+  };
+
+  const statusToEmTransito = () => {
+    const a = 'Em Trânsito';
+    fetchUpdateStatusSale(id, a);
+    setStatus(a);
+  };
+
+  const statusToEntregue = () => {
+    fetchUpdateStatusSale(id, 'Entregue');
+    setStatus('Entregue');
+  };
+
   return (
     <section>
       <p
@@ -26,23 +46,38 @@ function DetailsHead({ sale, dataTestId }) {
       <h4
         data-testid={ dataTestId.status }
       >
-        { sale.status }
+        { status }
       </h4>
-      <button
-        type="button"
-        data-testid={ dataTestId.preparingButton }
-        onClick={ () => {} }
-      >
-        Prepara pedido
-      </button>
-      <button
-        type="button"
-        data-testid={ dataTestId.dispatchButton }
-        onClick={ () => {} }
-        disabled
-      >
-        Saiu para entrega
-      </button>
+      {pathname.includes('seller') && (
+        <button
+          type="button"
+          data-testid={ dataTestId.preparingButton }
+          onClick={ statusToPreparando }
+          disabled={ status !== 'Pendente' }
+        >
+          Prepara pedido
+        </button>
+      )}
+      {pathname.includes('seller') && (
+        <button
+          type="button"
+          data-testid={ dataTestId.dispatchButton }
+          onClick={ statusToEmTransito }
+          disabled={ status !== 'Preparando' }
+        >
+          Saiu para entrega
+        </button>
+      )}
+      {pathname.includes('customer') && (
+        <button
+          type="button"
+          data-testid={ dataTestId.deliveryCheck }
+          onClick={ statusToEntregue }
+          disabled={ status !== 'Em Trânsito' }
+        >
+          Marcar como entregue
+        </button>
+      )}
     </section>
   );
 }

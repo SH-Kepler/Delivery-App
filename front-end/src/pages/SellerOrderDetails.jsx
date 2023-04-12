@@ -1,15 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import SellerDetailsHead from '../components/DetailsHead';
 import SellerDetailsTable from '../components/DetailsTable';
 import Amount from '../components/Amount';
-import NavBar from '../components/NavBar';
 
 function SellerOrderDetails() {
   const [sale, setSale] = useState(undefined);
   const { id } = useParams();
+
+  const history = useHistory();
+  const [userName, setUserName] = useState('');
+
+  const handleName = () => {
+    const nameStorage = JSON.parse(localStorage.getItem('user'));
+    const { name } = nameStorage;
+    setUserName(name);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('cart');
+    history.push('/login');
+  };
+
+  useEffect(() => {
+    handleName();
+  }, []);
 
   useEffect(() => {
     const asyncCalback = async () => {
@@ -42,7 +60,33 @@ function SellerOrderDetails() {
 
   return (
     <div>
-      <NavBar />
+
+      <header>
+        <nav>
+          <div>
+            <button
+              type="button"
+              data-testid="customer_products__element-navbar-link-orders"
+              onClick={ () => history.push('/seller/orders') }
+            >
+              Pedidos
+            </button>
+          </div>
+
+          <span data-testid="customer_products__element-navbar-user-full-name">
+            { userName }
+          </span>
+
+          <button
+            type="button"
+            data-testid="customer_products__element-navbar-link-logout"
+            onClick={ handleLogout }
+          >
+            Sair
+          </button>
+        </nav>
+      </header>
+
       <section>
         <h2>Detalhe do Pedido</h2>
         {sale && <SellerDetailsHead
