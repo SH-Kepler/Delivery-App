@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-// import { ProductsContext } from '../context/ProductsProvider';
 
 function NavBar() {
-  // const { userInfo } = useContext(ProductsContext);
   const [userName, setUserName] = useState('');
   const history = useHistory();
   const location = useLocation();
-  // console.log('locationn', location);
 
   const handleName = () => {
     const nameStorage = JSON.parse(localStorage.getItem('user'));
@@ -28,7 +25,7 @@ function NavBar() {
   return (
     <header>
       <nav>
-        { location.pathname.includes('customer') ? (
+        { location.pathname.includes('customer') && (
           <div>
             <button
               type="button"
@@ -45,9 +42,9 @@ function NavBar() {
               MEUS PEDIDOS
             </button>
           </div>
-        ) : false}
+        )}
 
-        { location.pathname.includes('seller') ? (
+        { location.pathname.includes('seller') && (
           <div>
             <button
               type="button"
@@ -57,9 +54,9 @@ function NavBar() {
               PEDIDOS
             </button>
           </div>
-        ) : true }
+        )}
 
-        { location.pathname.includes('admin') ? (
+        { location.pathname.includes('admin') && (
           <div>
             <button
               type="button"
@@ -69,7 +66,7 @@ function NavBar() {
               GERENCIAR USUÁRIOS
             </button>
           </div>
-        ) : true}
+        )}
 
         <span data-testid="customer_products__element-navbar-user-full-name">
           { userName }
