@@ -35,10 +35,24 @@ function Products() {
   }, [totalValue]);
 
   return (
-    <div>
+    <div className="products">
       <NavBar />
-      <div>
+
+      <div className="products__cards">
+        {products.map((product, index) => (
+          <ProductsCard
+            key={ product.id }
+            id={ product.id }
+            index={ index }
+            name={ product.name }
+            price={ product.price }
+            thumbnail={ product.url_image }
+          />
+        ))}
+      </div>
+      <div className="products__cart">
         <button
+          className="products__cart__btn"
           type="button"
           data-testid="customer_products__button-cart"
           disabled={ Number(totalValue) === 0 }
@@ -50,16 +64,7 @@ function Products() {
           </span>
         </button>
       </div>
-      {products.map((product, index) => (
-        <ProductsCard
-          key={ product.id }
-          id={ product.id }
-          index={ index }
-          name={ product.name }
-          price={ product.price }
-          thumbnail={ product.url_image }
-        />
-      ))}
+
     </div>
   );
 }

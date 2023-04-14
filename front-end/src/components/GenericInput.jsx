@@ -8,8 +8,7 @@ function GenericInput({ name, type, validation, keyOfInput, dataTestId }) {
   const showMessage = () => {
     const { value } = inputsValue[keyOfInput];
     if (value.length) {
-      return inputsValue[keyOfInput].isValid ? 'Campo válido'
-        : 'Campo inválido';
+      return !inputsValue[keyOfInput].isValid && 'Campo inválido';
     }
   };
 

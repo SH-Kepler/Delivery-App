@@ -65,46 +65,64 @@ function ProductsCard({ id, name, price, thumbnail }) {
   }, [qtd]);
 
   return (
-    <div>
-      <span
-        data-testid={ `customer_products__element-card-price-${id}` }
-      >
-        { `R$ ${Number(price).toFixed(2).replace('.', ',')}` }
-      </span>
-      <img
-        width={ 200 }
-        data-testid={ `customer_products__img-card-bg-image-${id}` }
-        src={ thumbnail }
-        alt="card produto"
-      />
-      <span
-        data-testid={ `customer_products__element-card-title-${id}` }
-      >
-        { name }
-      </span>
-      <button
-        type="button"
-        name="less"
-        onClick={ handleDecrement }
-        data-testid={ `customer_products__button-card-rm-item-${id}` }
-      >
-        -
-      </button>
-      <input
-        name="quantity"
-        value={ qtd }
-        type="text"
-        data-testid={ `customer_products__input-card-quantity-${id}` }
-        onChange={ handleQuantity }
-      />
-      <button
-        type="button"
-        name="add"
-        onClick={ handleIncrement }
-        data-testid={ `customer_products__button-card-add-item-${id}` }
-      >
-        +
-      </button>
+    <div className="product-card-main">
+      <div className="product-card">
+        <div className="product-card__controll">
+          <img
+            className="product-card__image"
+            width={ 200 }
+            data-testid={ `customer_products__img-card-bg-image-${id}` }
+            src={ thumbnail }
+            alt="card produto"
+          />
+          <span
+            className="product-card__price"
+            data-testid={ `customer_products__element-card-price-${id}` }
+          >
+            { `R$ ${Number(price).toFixed(2).replace('.', ',')}` }
+          </span>
+        </div>
+
+      </div>
+      <div className="product-card__bottom">
+        <div>
+          <span
+            className="product-card__name"
+            data-testid={ `customer_products__element-card-title-${id}` }
+          >
+            { name }
+          </span>
+        </div>
+        <div>
+          <button
+            className="product-card__buttons product-card__buttons__left"
+            type="button"
+            name="less"
+            onClick={ handleDecrement }
+            data-testid={ `customer_products__button-card-rm-item-${id}` }
+          >
+            -
+          </button>
+          <input
+            className="product-card__input"
+            name="quantity"
+            value={ qtd }
+            type="text"
+            placeholder="0"
+            data-testid={ `customer_products__input-card-quantity-${id}` }
+            onChange={ handleQuantity }
+          />
+          <button
+            className="product-card__buttons product-card__buttons__right"
+            type="button"
+            name="add"
+            onClick={ handleIncrement }
+            data-testid={ `customer_products__button-card-add-item-${id}` }
+          >
+            +
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
