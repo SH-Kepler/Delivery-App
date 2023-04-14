@@ -1,0 +1,31 @@
+.header {
+  position: absolute;
+  width: 100%;
+  top:0;
+  left: 0;
+  background-color: $color-grey-dark-3;
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 7rem;
+  }
+
+  &__image {
+    width: 7rem;
+  }
+
+  &__user {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: $default-font-size;
+
+    border: none;
+  }
+}

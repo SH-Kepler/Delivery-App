@@ -39,13 +39,22 @@
     background-color: rgba($color-black, .2);
     cursor: auto;
   }
+
+  &--primary-dark {
+    background-color: $color-primary-dark;
+      color: $color-grey-light-1;
+
+      &::after {
+          background-color: $color-primary-dark;
+      }
+  }
   
   &--light-grey {
       background-color: $color-grey-light-2;
       color: $color-grey-dark;
 
       &::after {
-          background-color: $color-white;
+          background-color: $color-grey-light-2;
       }
   }
 
