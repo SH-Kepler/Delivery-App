@@ -11,16 +11,6 @@ function SellerOrderDetails() {
   const [sale, setSale] = useState(undefined);
   const { id } = useParams();
 
-  const handleName = () => {
-    const nameStorage = JSON.parse(localStorage.getItem('user'));
-    const { name } = nameStorage;
-    setUserName(name);
-  };
-
-  useEffect(() => {
-    handleName();
-  }, []);
-
   useEffect(() => {
     const asyncCalback = async () => {
       const { token } = JSON.parse(localStorage.getItem('user'));
