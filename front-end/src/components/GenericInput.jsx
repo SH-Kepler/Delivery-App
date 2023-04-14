@@ -25,21 +25,31 @@ function GenericInput({ name, type, validation, keyOfInput, dataTestId }) {
   };
 
   return (
-    <section>
-      <label htmlFor="genericInput">
-        { name }
-        <input
-          type={ type }
-          value={ inputsValue[keyOfInput].value }
-          onChange={ ({ target }) => {
-            validation(target.value, setInputsValue);
-            onInputChange(target.value);
-          } }
-          data-testid={ dataTestId }
-        />
-      </label>
-      <span>{ showMessage() }</span>
-    </section>
+    <div>
+
+      <div className="form__group">
+        <div>
+          <input
+            className="form__input"
+            placeholder={ name }
+            type={ type }
+            value={ inputsValue[keyOfInput].value }
+            required
+            onChange={ ({ target }) => {
+              validation(target.value, setInputsValue);
+              onInputChange(target.value);
+            } }
+            data-testid={ dataTestId }
+          />
+          <label className="form__label" htmlFor="genericInput">
+            { name }
+          </label>
+        </div>
+        <div className="form__group__error">
+          <span>{ showMessage() }</span>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Products from './pages/Products';
 import CustomerOrder from './pages/CustomerOrder';
-import './App.css';
+import './sass/main.scss';
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import Login from './pages/Login';
 import Register from './pages/Register';

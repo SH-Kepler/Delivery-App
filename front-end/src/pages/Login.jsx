@@ -7,6 +7,8 @@ import {
   validatePasswordInput,
 } from '../utils/inputsValidation';
 
+import logo from '../images/logo.png';
+
 import { formContext } from '../context/FormProvider';
 
 function Login() {
@@ -52,39 +54,54 @@ function Login() {
   }, []);
 
   return (
-    <section>
-      <form onSubmit={ onSubmit }>
-        <GenericInput
-          name="Email"
-          keyOfInput="email"
-          type="email"
-          validation={ validateEmailInput }
-          dataTestId="common_login__input-email"
-        />
-        <GenericInput
-          name="Senha"
-          keyOfInput="password"
-          type="password"
-          validation={ validatePasswordInput }
-          dataTestId="common_login__input-password"
-        />
-        <button
-          disabled={ !(email.isValid && password.isValid) }
-          type="submit"
-          onClick={ postEndPointLogin }
-          data-testid="common_login__button-login"
-        >
-          Login
-        </button>
-        <button
-          type="submit"
-          onClick={ redirectToResgister }
-          data-testid="common_login__button-register"
-        >
-          Ainda não tenho conta
-        </button>
+    <section className="container-login-cadastro">
+      <form className="form" onSubmit={ onSubmit }>
+        <div className="form--img--animated">
+          <img className="logo" src={ logo } alt="logo" />
+        </div>
+        <div>
+          <GenericInput
+            name="Email"
+            keyOfInput="email"
+            type="email"
+            validation={ validateEmailInput }
+            dataTestId="common_login__input-email"
+          />
+          <GenericInput
+            name="Senha"
+            keyOfInput="password"
+            type="password"
+            validation={ validatePasswordInput }
+            dataTestId="common_login__input-password"
+          />
+          <span
+            className="form__error"
+            data-testid="common_login__element-invalid-email"
+          >
+            {errorMessage}
+
+          </span>
+          <div className="form__group">
+            <button
+              className="btn btn--grey btn--animated--left"
+              disabled={ !(email.isValid && password.isValid) }
+              type="submit"
+              onClick={ postEndPointLogin }
+              data-testid="common_login__button-login"
+            >
+              Login
+            </button>
+            <button
+              className="btn btn--light-grey btn--animated--right"
+              type="submit"
+              onClick={ redirectToResgister }
+              data-testid="common_login__button-register"
+            >
+              Ainda não tenho conta
+            </button>
+          </div>
+        </div>
       </form>
-      <span data-testid="common_login__element-invalid-email">{errorMessage}</span>
     </section>
   );
 }
