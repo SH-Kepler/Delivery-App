@@ -9,8 +9,6 @@ function Products() {
   const { products,
     setProducts,
     cart,
-    // totalPrice,
-    // setTotalPrice,
     totalValue,
     setTotalValue } = useContext(ProductsContext);
   const history = useHistory();
@@ -20,7 +18,6 @@ function Products() {
       .reduce((acc, curr) => acc + curr.price * curr.qtd, 0)
       .toFixed(2);
     setTotalValue(reduce);
-    console.log(typeof totalValue);
     return reduce;
   };
 

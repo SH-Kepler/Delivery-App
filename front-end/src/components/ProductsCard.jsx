@@ -53,7 +53,6 @@ function ProductsCard({ id, name, price, thumbnail }) {
   };
 
   useEffect(() => {
-    console.log('qtd', qtd);
     findElementUpdate(cart);
     const filterProduct = cart.filter((element) => element.qtd > 0);
     const findProduct = filterProduct.find((prod) => prod.id === item.id);

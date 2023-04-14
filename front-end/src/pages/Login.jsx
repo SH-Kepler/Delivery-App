@@ -25,7 +25,6 @@ function Login() {
     axios.post('http://localhost:3001/user/login', {
       email: email.value, password: password.value,
     }).then(({ data }) => {
-      console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
       setUser(data);
       switch (data.role) {

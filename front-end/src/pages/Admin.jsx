@@ -5,6 +5,7 @@ import UsersTable from '../components/UsersTable';
 import { formContext } from '../context/FormProvider';
 import { validateEmailInput,
   validateNameInput, validatePasswordInput } from '../utils/inputsValidation';
+import NavBar from '../components/NavBar';
 
 function Admin() {
   const [errorMessage, setErrorMessage] = useState('');
@@ -59,20 +60,9 @@ function Admin() {
 
   return (
     <div>
-      <header>
-        <h3 data-testid="customer_products__element-navbar-link-orders">
-          Gereciar Usuário
-        </h3>
-        <h3 data-testid="customer_products__element-navbar-user-full-name">
-          Admin
-        </h3>
-        <button type="button" data-testid="customer_products__element-navbar-link-logout">
-          Sair
-        </button>
-      </header>
+      <NavBar />
 
       <h1>Cadastrar novo Usuário</h1>
-
       <form onSubmit={ onSubmit }>
         <GenericInput
           name="Nome"
