@@ -33,20 +33,6 @@ function Products() {
 
   return (
     <div className="products">
-      <NavBar />
-
-      <div className="products__cards">
-        {products.map((product, index) => (
-          <ProductsCard
-            key={ product.id }
-            id={ product.id }
-            index={ index }
-            name={ product.name }
-            price={ product.price }
-            thumbnail={ product.url_image }
-          />
-        ))}
-      </div>
       <div className="products__cart">
         <button
           className="products__cart__btn"
@@ -60,6 +46,20 @@ function Products() {
             { totalValue.toString().replace('.', ',') }
           </span>
         </button>
+      </div>
+      <NavBar />
+
+      <div className="products__cards">
+        {products.map((product, index) => (
+          <ProductsCard
+            key={ product.id }
+            id={ product.id }
+            index={ index }
+            name={ product.name }
+            price={ product.price }
+            thumbnail={ product.url_image }
+          />
+        ))}
       </div>
 
     </div>

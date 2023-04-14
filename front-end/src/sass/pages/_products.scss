@@ -23,6 +23,15 @@
       width: 23rem;
       height: 5rem;
       border-radius: .6rem;
+      position: fixed;
+      right: 2.3rem;
+      bottom: 10px;
+      cursor: pointer;
     }
+
+    &:hover {
+      opacity: .8;
+      box-shadow: 0 1rem 2rem rgba($color-black,.2);
+  }
   }
 }
