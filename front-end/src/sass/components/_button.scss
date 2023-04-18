@@ -1,36 +1,37 @@
 .btn {
+
   &,
   &:link,
   &:visited {
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 1.5rem 4rem;
-      display: inline-block;
-      border-radius: 10rem;
-      transition: all .2s;
-      position: relative;
-      font-size: $default-font-size;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: $default-font-size;
 
-      //Change for the <button> element
-      border: none;
-      cursor: pointer;
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
   }
-  
+
   &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
 
-      &::after {
-          transform: scaleX(1.4) scaleY(1.6);
-          opacity: 0;
-      }
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
   }
-  
+
   &:active,
   &:focus {
-      outline: none;
-      transform: translateY(-1px);
-      box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
   }
 
   &:disabled {
@@ -38,59 +39,62 @@
     box-shadow: none;
     background-color: rgba($color-black, .2);
     cursor: auto;
+
+    &::after {
+      transform: none;
+      box-shadow: none;
+      background-color: rgba($color-black, .2);
+      cursor: auto;
+    }
   }
 
   &--primary-dark {
-    background-color: $color-primary-dark;
-      color: $color-grey-light-1;
+    background-color: $color-primary-dark-1;
+    color: $color-grey-light-1;
 
-      &::after {
-          background-color: $color-primary-dark;
-      }
+    &::after {
+      background-color: $color-primary-dark-1;
+    }
   }
-  
-  &--light-grey {
-      background-color: $color-grey-light-2;
-      color: $color-grey-dark;
 
-      &::after {
-          background-color: $color-grey-light-2;
-      }
+  &--light-grey {
+    background-color: $color-grey-light-2;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-grey-light-2;
+    }
   }
 
   &--grey {
-      background-color: $color-grey-dark-3;
-      color: $color-white;
+    background-color: $color-grey-dark-3;
+    color: $color-white;
 
-      &::after {
-          background-color: $color-grey-dark-3;
-      }
+    &::after {
+      background-color: $color-grey-dark-3;
+    }
   }
-  
+
   &::after {
-      content: "";
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      border-radius: 10rem;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      transition: all .4s;
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
   }
-  
+
   &--animated--left {
-      animation: moveInLeft .8s ease-out .75s;
-      animation-fill-mode: backwards;
+    animation: moveInLeft .8s ease-out .75s;
+    animation-fill-mode: backwards;
   }
 
   &--animated--right {
     animation: moveInRight .8s ease-out .75s;
     animation-fill-mode: backwards;
-  }
-
-  &--register {
-    padding-inline: 15rem;
   }
 }

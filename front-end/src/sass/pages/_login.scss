@@ -1,12 +1,9 @@
 .container-login-cadastro {
   width: 100vw;
   height: 100vh;
-  // background-image: url(./img/fundo_pc.png);
-  background-image: linear-gradient(
-    to right bottom,
-    rgba($color-primary-light, 0.6),
-    rgba($color-primary-dark, 0.6)),
-  url(../img/fundo_pc.png);
+  background-image: linear-gradient(rgba($color-black, 0.725),
+      rgba($color-black, 0.725)),
+    url(../img/fundo.svg);
   display: flex;
   justify-content: center;
   align-items: center;

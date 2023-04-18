@@ -50,6 +50,7 @@ function Login() {
     } else if (users.role === 'seller') {
       history.push('/seller/orders');
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -58,47 +59,45 @@ function Login() {
         <div className="form--img--animated">
           <img className="logo" src={ logo } alt="logo" />
         </div>
-        <div>
-          <GenericInput
-            name="Email"
-            keyOfInput="email"
-            type="email"
-            validation={ validateEmailInput }
-            dataTestId="common_login__input-email"
-          />
-          <GenericInput
-            name="Senha"
-            keyOfInput="password"
-            type="password"
-            validation={ validatePasswordInput }
-            dataTestId="common_login__input-password"
-          />
-          <span
-            className="form__error"
-            data-testid="common_login__element-invalid-email"
-          >
-            {errorMessage}
+        <GenericInput
+          name="Email"
+          keyOfInput="email"
+          type="email"
+          validation={ validateEmailInput }
+          dataTestId="common_login__input-email"
+        />
+        <GenericInput
+          name="Senha"
+          keyOfInput="password"
+          type="password"
+          validation={ validatePasswordInput }
+          dataTestId="common_login__input-password"
+        />
+        <span
+          className="form__error"
+          data-testid="common_login__element-invalid-email"
+        >
+          {errorMessage}
 
-          </span>
-          <div className="form__group">
-            <button
-              className="btn btn--grey btn--animated--left"
-              disabled={ !(email.isValid && password.isValid) }
-              type="submit"
-              onClick={ postEndPointLogin }
-              data-testid="common_login__button-login"
-            >
-              Login
-            </button>
-            <button
-              className="btn btn--light-grey btn--animated--right"
-              type="submit"
-              onClick={ redirectToResgister }
-              data-testid="common_login__button-register"
-            >
-              Ainda não tenho conta
-            </button>
-          </div>
+        </span>
+        <div className="form__group">
+          <button
+            className="btn btn--primary-dark btn--animated--left"
+            disabled={ !(email.isValid && password.isValid) }
+            type="submit"
+            onClick={ postEndPointLogin }
+            data-testid="common_login__button-login"
+          >
+            Login
+          </button>
+          <button
+            className="btn btn--light-grey btn--animated--right"
+            type="submit"
+            onClick={ redirectToResgister }
+            data-testid="common_login__button-register"
+          >
+            Cadastrar
+          </button>
         </div>
       </form>
     </section>

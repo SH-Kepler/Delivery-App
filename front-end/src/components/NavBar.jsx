@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import cerveja from '../images/cerveja.png';
+import logo from '../images/logo.png';
 
 function NavBar() {
   const [userName, setUserName] = useState('');
@@ -74,7 +74,7 @@ function NavBar() {
         )}
 
         <div>
-          <img className="header__image" src={ cerveja } alt="cerveja" />
+          <img className="header__image" src={ logo } alt="cerveja" />
         </div>
 
         <div>
