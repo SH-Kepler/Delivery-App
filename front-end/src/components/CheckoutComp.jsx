@@ -70,65 +70,70 @@ function Checkout() {
     await createSale();
   }
 
+  const headers = ['Item',
+    'Descrição', 'Quantidade', 'Valor Unitário', 'Sub-total', 'Remover Item'];
+
   return (
     <div>
       <p>Finalizar Pedido</p>
-      <div>
-        <span>Item</span>
-        <span>Descrição</span>
-        <span>Quantidade</span>
-        <span>Valor unitário</span>
-        <span>Sub-total</span>
-        <span>Remover Item</span>
-      </div>
-      <div>
-        {cart.map((item, i) => (
-          <div key={ i }>
-            <span
-              data-testid={
-                `customer_checkout__element-order-table-item-number-${i}`
-              }
-            >
-              {i + 1}
-            </span>
-            <p
-              data-testid={ `customer_checkout__element-order-table-name-${i}` }
-            >
-              {item.name}
+      <table>
+        <thead>
+          <tr>
+            {
+              headers.map((header) => (<th key={ header }>{ header }</th>))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {cart.map((item, i) => (
+            <tr key={ i }>
+              <td
+                data-testid={
+                  `customer_checkout__element-order-table-item-number-${i}`
+                }
+              >
+                {i + 1}
+              </td>
+              <td
+                data-testid={ `customer_checkout__element-order-table-name-${i}` }
+              >
+                {item.name}
 
-            </p>
-            <p
-              data-testid={ `customer_checkout__element-order-table-quantity-${i}` }
-            >
-              {item.qtd}
+              </td>
+              <td
+                data-testid={ `customer_checkout__element-order-table-quantity-${i}` }
+              >
+                {item.qtd}
 
-            </p>
-            <p
-              data-testid={ `customer_checkout__element-order-table-unit-price-${i}` }
-            >
-              {Number(item.price)
-                .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              </td>
+              <td
+                data-testid={ `customer_checkout__element-order-table-unit-price-${i}` }
+              >
+                {Number(item.price)
+                  .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
 
-            </p>
-            <p
-              data-testid={ `customer_checkout__element-order-table-sub-total-${i}` }
-            >
-              {Number((item.price * item.qtd)
-                .toFixed(2))
-                .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              </td>
+              <td
+                data-testid={ `customer_checkout__element-order-table-sub-total-${i}` }
+              >
+                {Number((item.price * item.qtd)
+                  .toFixed(2))
+                  .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
 
-            </p>
-            <button
-              type="button"
-              data-testid={ `customer_checkout__element-order-table-remove-${i}` }
-              onClick={ () => handleRemoveItem(item.id) }
-            >
-              Remover
+              </td>
+              <button
+                type="button"
+                data-testid={ `customer_checkout__element-order-table-remove-${i}` }
+                onClick={ () => handleRemoveItem(item.id) }
+              >
+                Remover
 
-            </button>
-          </div>
-        ))}
-      </div>
+              </button>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       <div>
         <p data-testid="customer_checkout__element-order-total-price">
           {Number(totalValue).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
