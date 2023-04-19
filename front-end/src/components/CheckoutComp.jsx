@@ -10,7 +10,7 @@ function Checkout() {
   const { cart, totalValue, setCart, setTotalValue } = useContext(ProductsContext);
   const [form, setForm] = useState([]);
   const [sellers, setSellers] = useState([]);
-  const [theSeller, setTheSeller] = useState(sellers[0]);
+  const [theSeller, setTheSeller] = useState(2);
 
   const getSellers = async () => {
     try {

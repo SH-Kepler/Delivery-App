@@ -43,16 +43,14 @@ function CustomerOrderDetails() {
   });
 
   return (
-    <div>
+    <div className="order-details">
       <NavBar />
-      <section>
+      <div className="order-details__main">
         <h2>Detalhe do Pedido</h2>
         {sale && <CustomerDetailsHead
           sale={ sale }
           dataTestId={ dataTestIdHeadObj }
         />}
-      </section>
-      <section>
         {sale && <CustomerDetailsTable
           sale={ sale }
           dataTestId={ dataTestIdTablefunc }
@@ -61,7 +59,7 @@ function CustomerOrderDetails() {
           sale={ sale }
           dataTestId="customer_order_details__element-order-total-price"
         />}
-      </section>
+      </div>
     </div>
   );
 }
