@@ -7,6 +7,7 @@ function Checkout() {
   const { cart, totalValue, setCart, setTotalValue } = useContext(ProductsContext);
   const [form, setForm] = useState([]);
   const [sellers, setSellers] = useState([]);
+  const [theSeller, setTheSeller] = useState(sellers[0]);
 
   const getSellers = async () => {
     try {
@@ -44,6 +45,10 @@ function Checkout() {
     setForm({ ...form, [name]: value });
   }
 
+  const handleSeller = ({ target }) => {
+    setTheSeller(target.value);
+  };
+
   async function handleSubmitForm(event) {
     event.preventDefault();
     const createSale = async () => {
@@ -53,8 +58,9 @@ function Checkout() {
           id: product.id,
         }),
       );
-      const newSale = { userId: id,
-        sellerId: form.seller,
+      const newSale = {
+        userId: id,
+        sellerId: theSeller,
         deliveryAddress: form.address,
         deliveryNumber: form.number,
         totalPrice: totalValue,
@@ -75,7 +81,7 @@ function Checkout() {
 
   return (
     <div>
-      <p>Finalizar Pedido</p>
+      <h1>Finalizar Pedido</h1>
       <table>
         <thead>
           <tr>
@@ -144,11 +150,10 @@ function Checkout() {
           <select
             id="seller"
             name="seller"
-            value={ sellers }
-            onChange={ handleChange }
+            value={ theSeller }
+            onChange={ handleSeller }
             data-testid="customer_checkout__select-seller"
           >
-            <option defaultValue="trybe@deliveryapp.com">Selecione o vendedor</option>
             {sellers.map((seller) => (
               <option value={ seller.id } key={ seller.id }>{seller.name}</option>
             ))}
