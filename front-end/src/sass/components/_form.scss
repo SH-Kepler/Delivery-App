@@ -20,7 +20,7 @@
 
   &__error {
     font-size: 1.8rem;
-    color: $color-secondary-dark;
+    color: $color-wrong;
   }
 
   &__group {
@@ -30,7 +30,7 @@
 
     &__error {
       font-size: 1.8rem;
-      color: $color-secondary-dark;
+      color: $color-wrong;
       margin-left: 25px;
     }
   }
@@ -55,15 +55,15 @@
     &:focus {
       outline: none;
       box-shadow: 0 1rem 2rem rgba($color-black, .1);
-      border-bottom: 3px solid $color-tertiary-dark;
+      border-bottom: 3px solid $color-ok;
     }
 
     &:focus:invalid {
-      border-bottom: 3px solid $color-secondary-dark;
+      border-bottom: 3px solid $color-wrong;
     }
 
     &::-webkit-input-placeholder {
-      color: $color-blue-dark;
+      color: $color-black;
     }
   }
 

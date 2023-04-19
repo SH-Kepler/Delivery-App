@@ -1,9 +1,5 @@
 .products {
-  padding: 20rem 0;
-  background-image: linear-gradient(rgba($color-black, 0.725),
-      rgba($color-black, 0.725)),
-    url(../img/fundo.svg);
-  margin-top: -10rem;
+  padding: 10rem 0;
 
   &__cards {
     display: flex;

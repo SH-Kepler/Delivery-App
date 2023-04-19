@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { ProductsContext } from '../context/ProductsProvider';
+import trash from '../images/trash.svg';
 
 function Checkout() {
   const { cart, totalValue, setCart, setTotalValue } = useContext(ProductsContext);
@@ -80,20 +81,28 @@ function Checkout() {
     'Descrição', 'Quantidade', 'Valor Unitário', 'Sub-total', 'Remover Item'];
 
   return (
-    <div>
+    <div className="checkout__main">
       <h1>Finalizar Pedido</h1>
-      <table>
-        <thead>
+      <table className="table">
+        <thead className="table__head">
           <tr>
             {
-              headers.map((header) => (<th key={ header }>{ header }</th>))
+              headers.map((header) => (
+                <th
+                  className="table__head__item"
+                  key={ header }
+                >
+                  { header }
+
+                </th>))
             }
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table__body">
           {cart.map((item, i) => (
-            <tr key={ i }>
+            <tr className="table__body__tr" key={ i }>
               <td
+                className=" table__body__td table__body__item"
                 data-testid={
                   `customer_checkout__element-order-table-item-number-${i}`
                 }
@@ -101,18 +110,21 @@ function Checkout() {
                 {i + 1}
               </td>
               <td
+                className="table__body__td table__body__descricao"
                 data-testid={ `customer_checkout__element-order-table-name-${i}` }
               >
                 {item.name}
 
               </td>
               <td
+                className="table__body__td table__body__quantidade"
                 data-testid={ `customer_checkout__element-order-table-quantity-${i}` }
               >
                 {item.qtd}
 
               </td>
               <td
+                className="table__body__td table__body__valor"
                 data-testid={ `customer_checkout__element-order-table-unit-price-${i}` }
               >
                 {Number(item.price)
@@ -120,6 +132,7 @@ function Checkout() {
 
               </td>
               <td
+                className="table__body__td table__body__sub-total"
                 data-testid={ `customer_checkout__element-order-table-sub-total-${i}` }
               >
                 {Number((item.price * item.qtd)
@@ -127,23 +140,29 @@ function Checkout() {
                   .toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
 
               </td>
-              <button
-                type="button"
-                data-testid={ `customer_checkout__element-order-table-remove-${i}` }
-                onClick={ () => handleRemoveItem(item.id) }
-              >
-                Remover
-
-              </button>
+              <td className="table__body__td table__body__remover">
+                <button
+                  className="table__body__remover__btn"
+                  type="button"
+                  data-testid={ `customer_checkout__element-order-table-remove-${i}` }
+                  onClick={ () => handleRemoveItem(item.id) }
+                >
+                  <img src={ trash } alt="trash" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <p
+        className="table__amount"
+        data-testid="customer_checkout__element-order-total-price"
+      >
+        total: R$
+        {Number(totalValue).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+      </p>
 
       <div>
-        <p data-testid="customer_checkout__element-order-total-price">
-          {Number(totalValue).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-        </p>
         <span>Detalhes e Endereço de Entrega</span>
         <label htmlFor="seller">
           P.Vendedora Responsável

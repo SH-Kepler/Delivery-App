@@ -4,7 +4,7 @@ import CheckoutComponent from '../components/CheckoutComp';
 
 function Checkout() {
   return (
-    <div>
+    <div className="checkout">
       <Navbar />
       <CheckoutComponent />
     </div>

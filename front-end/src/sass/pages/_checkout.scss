@@ -1,0 +1,9 @@
+.checkout {
+  padding: 10rem 0;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 9rem;
+  }
+}
