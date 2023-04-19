@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-max-depth */
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -82,7 +84,7 @@ function Checkout() {
 
   return (
     <div className="checkout__main">
-      <h1>Finalizar Pedido</h1>
+      <p className="checkout__title">Finalizar Pedido</p>
       <table className="table">
         <thead className="table__head">
           <tr>
@@ -163,47 +165,68 @@ function Checkout() {
       </p>
 
       <div>
-        <span>Detalhes e Endereço de Entrega</span>
-        <label htmlFor="seller">
-          P.Vendedora Responsável
-          <select
-            id="seller"
-            name="seller"
-            value={ theSeller }
-            onChange={ handleSeller }
-            data-testid="customer_checkout__select-seller"
-          >
-            {sellers.map((seller) => (
-              <option value={ seller.id } key={ seller.id }>{seller.name}</option>
-            ))}
-          </select>
-        </label>
-        <form onSubmit={ (e) => handleSubmitForm(e) }>
-          <label htmlFor="address">
-            Endereço
-            <input
-              type="text"
-              id="address"
-              name="address"
-              value={ form.address }
-              onChange={ handleChange }
-              placeholder="Digite o endereço"
-              data-testid="customer_checkout__input-address"
-            />
-          </label>
-          <label htmlFor="number">
-            Número
-            <input
-              type="text"
-              id="number"
-              name="number"
-              value={ form.number }
-              onChange={ handleChange }
-              placeholder="Digite o número"
-              data-testid="customer_checkout__input-address-number"
-            />
-          </label>
+        <p className="checkout__title">Detalhes e Endereço de Entrega</p>
+        <form className="form-checkout" onSubmit={ (e) => handleSubmitForm(e) }>
+          <div className="form-checkout__inputs">
+            <div className="form-checkout__input">
+              <label
+                className="form-checkout__input__label"
+                htmlFor="seller"
+              >
+                P.Vendedora Responsável
+              </label>
+
+              <select
+                className="form-checkout__input__select"
+                id="seller"
+                name="seller"
+                value={ theSeller }
+                onChange={ handleSeller }
+                data-testid="customer_checkout__select-seller"
+              >
+                {sellers.map((seller) => (
+                  <option value={ seller.id } key={ seller.id }>{seller.name}</option>
+                ))}
+              </select>
+            </div>
+            <div className="form-checkout__input">
+
+              <label className="form-checkout__input__label" htmlFor="address">
+                Endereço
+              </label>
+
+              <input
+                className="form-checkout__input__texto"
+                type="text"
+                id="address"
+                name="address"
+                value={ form.address }
+                onChange={ handleChange }
+                placeholder="Digite o endereço"
+                data-testid="customer_checkout__input-address"
+              />
+            </div>
+
+            <div className="form-checkout__input">
+              <label className="form-checkout__input__label" htmlFor="number">
+                Número
+              </label>
+
+              <input
+                className="form-checkout__input__texto"
+                type="text"
+                id="number"
+                name="number"
+                value={ form.number }
+                onChange={ handleChange }
+                placeholder="Digite o número"
+                data-testid="customer_checkout__input-address-number"
+              />
+            </div>
+
+          </div>
           <button
+            className="btn btn--animated--right btn--light-grey form-checkout__btn"
             data-testid="customer_checkout__button-submit-order"
             type="submit"
             onClick={ handleSubmitForm }
