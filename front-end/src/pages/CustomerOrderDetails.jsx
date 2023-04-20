@@ -46,7 +46,7 @@ function CustomerOrderDetails() {
     <div className="order-details">
       <NavBar />
       <div className="order-details__main">
-        <h2>Detalhe do Pedido</h2>
+        <h2 className="order-details__title">Detalhe do Pedido</h2>
         {sale && <CustomerDetailsHead
           sale={ sale }
           dataTestId={ dataTestIdHeadObj }

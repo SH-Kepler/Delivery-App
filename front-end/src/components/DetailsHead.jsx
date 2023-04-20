@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -9,47 +10,62 @@ function DetailsHead({ sale, dataTestId }) {
   const [status, setStatus] = useState(sale.status);
   const { id } = useParams();
 
+  // let classStatus = 'pendente';
+
   const statusToPreparando = () => {
     fetchUpdateStatusSale(id, 'Preparando');
     setStatus('Preparando');
+    // classStatus = 'preparando';
   };
 
   const statusToEmTransito = () => {
-    const a = 'Em Trânsito';
-    fetchUpdateStatusSale(id, a);
-    setStatus(a);
+    fetchUpdateStatusSale(id, 'Em Trânsito');
+    setStatus('Em Trânsito');
+    // classStatus = 'em-transito';
   };
 
   const statusToEntregue = () => {
     fetchUpdateStatusSale(id, 'Entregue');
     setStatus('Entregue');
+    // classStatus = 'entregue';
   };
 
   return (
-    <section>
+    <div className="details-head">
       <p
+        className="details-head__id"
         data-testid={ dataTestId.id }
       >
 
+        Pedido
+        {' '}
         { sale.id }
       </p>
+      {
+        pathname.includes('customer') && (
+          <p>
+            Vendedor:
+            {' '}
+            {sale.seller.name}
+          </p>
+        )
+      }
       <p
-        data-testid={ dataTestId.seller }
-      >
-        {pathname.includes('customer') && sale.seller.name}
-      </p>
-      <p
+        className="details-head__data"
         data-testid={ dataTestId.date }
       >
         { moment(sale.saleDate).format('DD/MM/YYYY') }
       </p>
       <h4
+        className={ `status-${status.replace(' ', '-')} status` }
+        // className="status-preparando"
         data-testid={ dataTestId.status }
       >
         { status }
       </h4>
       {pathname.includes('seller') && (
         <button
+          className="btn btn--primary-dark details-head__preparando"
           type="button"
           data-testid={ dataTestId.preparingButton }
           onClick={ statusToPreparando }
@@ -60,6 +76,7 @@ function DetailsHead({ sale, dataTestId }) {
       )}
       {pathname.includes('seller') && (
         <button
+          className="btn btn--primary-dark details-head__enviando"
           type="button"
           data-testid={ dataTestId.dispatchButton }
           onClick={ statusToEmTransito }
@@ -70,6 +87,7 @@ function DetailsHead({ sale, dataTestId }) {
       )}
       {pathname.includes('customer') && (
         <button
+          className="btn btn--green details-head__entregue"
           type="button"
           data-testid={ dataTestId.deliveryCheck }
           onClick={ statusToEntregue }
@@ -78,7 +96,7 @@ function DetailsHead({ sale, dataTestId }) {
           Marcar como entregue
         </button>
       )}
-    </section>
+    </div>
   );
 }
 
