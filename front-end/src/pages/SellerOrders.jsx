@@ -34,19 +34,21 @@ function SellerOrders() {
   return (
     <div>
       <NavBar />
-      {Orders.map((sale, index) => (
-        <OrdersCard
-          key={ index }
-          index={ index }
-          id={ sale.id }
-          status={ sale.status }
-          deliveryAddress={ sale.deliveryAddress }
-          deliveryNumber={ sale.deliveryNumber }
-          saleDate={ sale.saleDate }
-          totalPrice={ sale.totalPrice }
-          dataTestId={ dataTestIdFunc }
-        />
-      ))}
+      <div className="orders">
+        {Orders.map((sale, index) => (
+          <OrdersCard
+            key={ index }
+            index={ index }
+            id={ sale.id }
+            status={ sale.status }
+            deliveryAddress={ sale.deliveryAddress }
+            deliveryNumber={ sale.deliveryNumber }
+            saleDate={ sale.saleDate }
+            totalPrice={ sale.totalPrice }
+            dataTestId={ dataTestIdFunc }
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -10,24 +10,19 @@ function DetailsHead({ sale, dataTestId }) {
   const [status, setStatus] = useState(sale.status);
   const { id } = useParams();
 
-  // let classStatus = 'pendente';
-
   const statusToPreparando = () => {
     fetchUpdateStatusSale(id, 'Preparando');
     setStatus('Preparando');
-    // classStatus = 'preparando';
   };
 
   const statusToEmTransito = () => {
     fetchUpdateStatusSale(id, 'Em Trânsito');
     setStatus('Em Trânsito');
-    // classStatus = 'em-transito';
   };
 
   const statusToEntregue = () => {
     fetchUpdateStatusSale(id, 'Entregue');
     setStatus('Entregue');
-    // classStatus = 'entregue';
   };
 
   return (
@@ -56,13 +51,12 @@ function DetailsHead({ sale, dataTestId }) {
       >
         { moment(sale.saleDate).format('DD/MM/YYYY') }
       </p>
-      <h4
+      <p
         className={ `status-${status.replace(' ', '-')} status` }
-        // className="status-preparando"
         data-testid={ dataTestId.status }
       >
         { status }
-      </h4>
+      </p>
       {pathname.includes('seller') && (
         <button
           className="btn btn--primary-dark details-head__preparando"

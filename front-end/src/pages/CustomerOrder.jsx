@@ -36,7 +36,7 @@ export default function CustomerOrder() {
   return (
     <div>
       <Navbar />
-      <div>
+      <div className="orders">
         { orders.length !== 0 ? orders.map((sale) => (
           <OrdersCard
             key={ sale.id }
