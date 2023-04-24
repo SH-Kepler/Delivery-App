@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 function Amount({ sale, dataTestId }) {
   return (
-    <h3 data-testid={ dataTestId }>
+    <p className="table__amount" data-testid={ dataTestId }>
+      total: R$
       {sale.products.reduce((acc, curr) => acc
       + (curr.price * curr.SalesProducts.quantity), 0).toFixed(2).replace('.', ',')}
-    </h3>
+    </p>
   );
 }
 

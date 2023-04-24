@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import trash from '../images/trash.svg';
 
 function UsersTable({ users }) {
   const headers = ['Item',
@@ -17,39 +18,61 @@ function UsersTable({ users }) {
   };
 
   return (
-    <div>
-      <h1>Lista de usuários</h1>
+    <div className="lista-de-usuários">
+      <h1 className="admin__title">Lista de usuários</h1>
 
-      <table>
-        <thead>
+      <table className="table">
+        <thead className="table__head">
           <tr>
             {
-              headers.map((header) => (<th key={ header }>{ header }</th>))
+              headers.map((header) => (
+                <th
+                  className="table__head__item"
+                  key={ header }
+                >
+                  { header }
+
+                </th>))
             }
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table__body">
           {users.map((item, i) => (
-            <tr key={ i }>
-              <td data-testid="admin_manage__element-user-table-item-number-">
+            <tr className="table__body__tr" key={ i }>
+              <td
+                className=" table__body__td table__body__item"
+                data-testid="admin_manage__element-user-table-item-number-"
+              >
                 {item.id}
               </td>
-              <td data-testid="admin_manage__element-user-table-name-">
+              <td
+                className="table__body__td table__body__descricao"
+                data-testid="admin_manage__element-user-table-name-"
+              >
                 {item.name}
               </td>
-              <td data-testid={ `admin_manage__element-user-table-email-${i}` }>
+              <td
+                className="table__body__td table__body__quantidade"
+                data-testid={ `admin_manage__element-user-table-email-${i}` }
+              >
                 {item.email}
               </td>
-              <td data-testid={ `admin_manage__element-user-table-role-${i}` }>
+              <td
+                className="table__body__td table__body__valor"
+                data-testid={ `admin_manage__element-user-table-role-${i}` }
+              >
                 {item.role}
               </td>
-              <button
-                type="button"
-                onClick={ () => deleteUser(item.id) }
-                data-testid={ `admin_manage__element-user-table-remove-${i}` }
-              >
-                Excluir
-              </button>
+              <td className="table__body__td table__body__remover">
+                <button
+                  className="table__body__remover__btn"
+                  type="button"
+                  onClick={ () => deleteUser(item.id) }
+                  data-testid={ `admin_manage__element-user-table-remove-${i}` }
+                >
+                  <img src={ trash } alt="trash" />
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

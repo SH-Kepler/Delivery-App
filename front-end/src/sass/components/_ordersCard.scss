@@ -1,0 +1,66 @@
+.orders {
+  &__card {
+    display: flex;
+    align-items: center;
+    background-color: rgba($color-grey-dark-2, 0.5);
+    color: $color-white;
+    border-radius: .6rem;
+    text-decoration: none;
+    padding: 1.5rem 7.5rem;
+    margin: 0 0 4rem 2rem;
+    transition: transform .3s;
+
+    &:hover {
+      transform: translateY(-1.5rem) scale(1.03);
+    }
+
+    &__none-animation {
+      cursor: pointer;
+      margin-bottom: 1rem;
+
+      &:hover::after {
+        animation: none;
+      }
+    }
+
+    &__pedido {
+      text-align: center;
+      margin-right: 3rem;
+
+
+      &__title {
+        font-size: 2rem;
+      }
+
+      &__id {
+        font-size: 2.5rem;
+      }
+    }
+
+    &__any {
+      text-align: center;
+      margin-left: 3rem;
+
+      &__item {
+        background-color: rgba($color-grey-dark-2, 0.5);
+        padding-inline: 1rem;
+        font-size: 2rem;
+        border-radius: .6rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__address {
+      font-size: 1.35rem;
+    }
+
+    &__conteiner-1 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__conteiner-2 {
+      display: flex;
+    }
+  }
+}

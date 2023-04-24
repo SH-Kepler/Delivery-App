@@ -1,0 +1,15 @@
+.checkout {
+  padding: 10rem 0;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 9rem;
+  }
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+}

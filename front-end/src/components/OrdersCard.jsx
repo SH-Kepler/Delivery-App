@@ -24,51 +24,60 @@ export default function OrdersCard({
 
   return (
     <Link
+      className="orders__card"
       to={
         pathname.includes('customer')
           ? `/customer/orders/${id}`
           : `/seller/orders/${id}`
       }
     >
-      <div>
+      <div className="orders__card__pedido">
+        <p className="orders__card__pedido__title">Pedido</p>
         {pathname.includes('customer') ? (
-          <div
+          <p
+            className="orders__card__pedido__id"
             data-testid={ dataTestId(id).idCustomer }
           >
             { id }
-          </div>
+          </p>
         ) : (
-          <h2 data-testid={ dataTestId(id).idSeller }>
+          <p className="orders__card__pedido__id" data-testid={ dataTestId(id).idSeller }>
             {index < NUMBER_OITO ? `000${index + 1}` : `00${index + 1}`}
-          </h2>
+          </p>
         )}
-        <div>
+      </div>
+      <div className="orders__card__conteiner-1">
+        <div className="orders__card__conteiner-2">
           <p
+            className={ `status-${status.replace(' ', '-')}
+            status orders__card__none-animation` }
             data-testid={ dataTestId(id).status }
 
           >
             { status }
           </p>
-          <div>
+          <div className="orders__card__any">
             <p
+              className="orders__card__any__item"
               data-testid={ dataTestId(id).date }
 
             >
               { handleDate() }
             </p>
             <p
+              className="orders__card__any__item"
               data-testid={ dataTestId(id).totalPrice }
 
             >
               { totalPrice.replace('.', ',') }
             </p>
-            {pathname.includes('seller') && (
-              <p data-testid={ dataTestId(id).address }>
-                {`${deliveryAddress}, ${deliveryNumber}`}
-              </p>
-            )}
           </div>
         </div>
+        {pathname.includes('seller') && (
+          <p className="orders__card__address" data-testid={ dataTestId(id).address }>
+            {`${deliveryAddress}, ${deliveryNumber}`}
+          </p>
+        )}
       </div>
     </Link>
   );

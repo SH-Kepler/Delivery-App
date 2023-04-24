@@ -11,7 +11,17 @@
 
 @import "./pages/login";
 @import "./pages/products";
+@import "./pages/checkout";
+@import "./pages/orderDetails";
+@import "./pages/orders";
+@import "./pages/admin";
 
 @import "./components/form";
 @import "./components/button";
 @import "./components/product-card";
+@import "./components/table";
+@import "./components/formCheckout";
+@import "./components/detailsHead";
+@import "./components/status";
+@import "./components/ordersCard";
+@import "./components/listaDeUsuarios";

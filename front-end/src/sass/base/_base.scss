@@ -6,6 +6,11 @@
   box-sizing: inherit;
 }
 
+body {
+  background-image: linear-gradient(rgba($color-black, 0.725), rgba($color-black, 0.725)),
+    url(../img/fundo.svg);
+}
+
 html {
   font-size: 62.5%;
 }

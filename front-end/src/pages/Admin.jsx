@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-max-depth */
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import GenericInput from '../components/GenericInput';
@@ -62,62 +64,70 @@ function Admin() {
     <div>
       <NavBar />
 
-      <h1>Cadastrar novo Usuário</h1>
-      <form onSubmit={ onSubmit }>
-        <GenericInput
-          name="Nome"
-          keyOfInput="name"
-          type="text"
-          validation={ validateNameInput }
-          dataTestId="admin_manage__input-name"
-        />
-        <GenericInput
-          name="Email"
-          keyOfInput="email"
-          type="email"
-          validation={ validateEmailInput }
-          dataTestId="admin_manage__input-email"
-        />
-        <GenericInput
-          name="Senha"
-          keyOfInput="password"
-          type="password"
-          validation={ validatePasswordInput }
-          dataTestId="admin_manage__input-password"
-        />
+      <div className="admin">
+        <div className="admin__main">
+          <h1 className="admin__title">Cadastrar novo Usuário</h1>
+          <form className="admin__form" onSubmit={ onSubmit }>
+            <GenericInput
+              name="Nome"
+              keyOfInput="name"
+              type="text"
+              validation={ validateNameInput }
+              dataTestId="admin_manage__input-name"
+            />
+            <GenericInput
+              name="Email"
+              keyOfInput="email"
+              type="email"
+              validation={ validateEmailInput }
+              dataTestId="admin_manage__input-email"
+            />
+            <GenericInput
+              name="Senha"
+              keyOfInput="password"
+              type="password"
+              validation={ validatePasswordInput }
+              dataTestId="admin_manage__input-password"
+            />
+            <div className="form__group">
+              <div>
+                <select
+                  className="form__input"
+                  type="role"
+                  name="role"
+                  value={ role }
+                  data-testid="admin_manage__select-role"
+                  onChange={ handleRole }
+                >
+                  <option value="seller">Vendedor</option>
+                  <option value="customer">Cliente</option>
+                  <option value="administrator">Administrador</option>
+                </select>
+              </div>
+            </div>
 
-        <label htmlFor="role">
-          Tipo:
-          <select
-            type="role"
-            name="role"
-            value={ role }
-            data-testid="admin_manage__select-role"
-            onChange={ handleRole }
-          >
-            <option value="seller">Vendedor</option>
-            <option value="customer">Cliente</option>
-            <option value="administrator">Administrador</option>
-          </select>
-        </label>
+            <span
+              className="form__error"
+              data-testid="admin_manage__element-invalid-register"
+            >
+              {errorMessage}
+            </span>
 
-        <button
-          disabled={ !(email.isValid && password.isValid && name.isValid) }
-          type="submit"
-          onClick={ postEndPointRegister }
-          data-testid="admin_manage__button-register"
-        >
-          Cadastrar
-        </button>
-        <span
-          data-testid="admin_manage__element-invalid-register"
-        >
-          {errorMessage}
-        </span>
-      </form>
-      <UsersTable users={ allUsers } set={ setAllUsers } />
+            <button
+              className="btn-admin btn btn--primary-dark btn--animated--left"
+              disabled={ !(email.isValid && password.isValid && name.isValid) }
+              type="submit"
+              onClick={ postEndPointRegister }
+              data-testid="admin_manage__button-register"
+            >
+              Cadastrar
+            </button>
+
+          </form>
+          <UsersTable users={ allUsers } set={ setAllUsers } />
+        </div>
+      </div>
     </div>
-
   );
 }
 

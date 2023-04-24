@@ -1,16 +1,11 @@
 $color-primary: #ffd930;
 $color-primary-light: #ffe77a;
-$color-primary-dark: #E6AE35;
+$color-primary-dark-1: #E9AF0E;
 
-$color-quaternary: #8C8F6B;
-$color-quaternary-light: #c1c592;
-$color-quaternary-dark: #545544;
+$color-wrong: #ff7730;
+$color-ok: #28b485;
 
-$color-secondary-light: #ffb900;
-$color-secondary-dark: #ff7730;
-
-$color-tertiary-light: #7ed56f;
-$color-tertiary-dark: #28b485;
+$color-green: #87D53C;
 
 $color-grey-light-1: #f7f7f7;
 $color-grey-light-2: #eee;
@@ -26,10 +21,3 @@ $color-black: #000;
 
 // FONT
 $default-font-size: 1.6rem;
-
-
-// GRID
-$grid-width: 114rem;
-$gutter-vertical: 8rem;
-$gutter-vertical-small: 6rem;
-$gutter-horizontal: 6rem;
