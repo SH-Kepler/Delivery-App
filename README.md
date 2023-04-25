@@ -52,5 +52,44 @@ Como esse era um projeto em grupo, nos dividimos nas tarefas, eu fiquei respons�
 Clone o projeto:
 
 ```
-git clone git@github.com:SH-Kepler/project-delivery-app.git
+git clone git@github.com:SH-Kepler/Delivery-App.git
 ```
+Vá para o diretório do projeto:
+
+```
+cd Delivery-App
+```
+Instale as dependências da pasta raiz:
+
+```
+npm install
+```
+Instale as dependências de Back e Front:
+
+```
+npm run dev:prestart
+```
+
+Inicie o projeto:
+
+```
+npm run dev
+```
+
+### Feito isso, basta aguardar, ele irá abrir automaticamente em seu navegador a url http://localhost:3000
+
+## Para fazer login, utilize:
+
+**Cliente**
+* email: zebirita@email.com
+<li>
+<ul>senha: $#zebirita#$<ul/>
+<li/>
+
+**Vendedor(a)**
+* email: fulana@deliveryapp.com
+* senha: fulana@123
+
+**Admin**
+* email: adm@deliveryapp.com
+* senha: --adm2@21!!--
