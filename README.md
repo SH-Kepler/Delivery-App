@@ -81,8 +81,7 @@ npm run dev
 ## Para fazer login, utilize:
 
 **Cliente**
-* email: zebirita@email.com
-* senha: 
+* Basta clicar em `Cadastrar` e fazer um novo cadastro
 
 **Vendedor(a)**
 * email: fulana@deliveryapp.com
