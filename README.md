@@ -82,9 +82,7 @@ npm run dev
 
 **Cliente**
 * email: zebirita@email.com
-<li>
-<ul>senha: $#zebirita#$<ul/>
-<li/>
+* senha: 
 
 **Vendedor(a)**
 * email: fulana@deliveryapp.com
