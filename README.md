@@ -44,4 +44,13 @@ Como esse era um projeto em grupo, nos dividimos nas tarefas, eu fiquei respons�
 * Axios
 * Sass
 
-# Execute localmente:
+# Preparação antes de iniciar o projeto
+* ⚠️Garanta que sua máquina tenha o `node` instalado na versão 16, caso não esteja você pode usar o [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating) para fazer o gerenciamento das versões.
+* ⚠️ Para testes locais, é fundamental configurar o arquivo de variáveis de ambiente `.env` (de environment) dentro da pasta `./back-end` (ele é o único `.env` no projeto), conforme exemplo em `.env.example`, na mesma pasta.
+
+## Execute localmente:
+Clone o projeto:
+
+```
+git clone git@github.com:SH-Kepler/project-delivery-app.git
+```
